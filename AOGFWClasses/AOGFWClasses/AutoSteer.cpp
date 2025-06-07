@@ -4,6 +4,18 @@
 
 #include "AutoSteer.h"
 
+AutoSteer::AutoSteer(
+  uint8_t isActiveLedPin,
+  uint8_t isStandByLedPin,
+  uint8_t pwmDrivePin
+) :
+  _isActiveLed(Led(isActiveLedPin)),
+  _isStandByLed(Led(isStandByLedPin)),
+  _pwmDrive(PwmPin(pwmDrivePin))
+{
+
+}
+
 // this will need to be particular to steering method
 // so PWM, CANBUS etc
 // so it will need to be moved from here to the appropriate concrete class

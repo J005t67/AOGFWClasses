@@ -9,6 +9,23 @@
 	#include "WProgram.h"
 #endif
 
+#include ".\ArduinoWrapper\ArduinoWrapper.h"
+#include "LED.h"
+
+class AutoSteer
+{
+public:
+  AutoSteer(
+    uint8_t isActiveLedPin,
+    uint8_t isStandByLedPin,
+    uint8_t pwmDrivePin
+  );
+private:
+  Led _isActiveLed;  // Red
+  Led _isStandByLed; // Green
+  PwmPin _pwmDrive;
+};
+
 //How many degrees before decreasing Max PWM
 #define LOW_HIGH_DEGREES 3.0
 

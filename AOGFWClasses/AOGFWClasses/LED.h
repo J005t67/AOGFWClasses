@@ -3,11 +3,20 @@
 #ifndef _LED_h
 #define _LED_h
 
-#if defined(ARDUINO) && ARDUINO >= 100
-#include "arduino.h"
-#else
-#include "WProgram.h"
-#endif
+#include "ArduinoWrapper\OutputPin.h"
+
+class Led : public OutputPin
+{
+public:
+  Led(uint8_t pinNr);
+  void on();
+  void off();
+  void invert();
+private:
+  bool _isOn;
+};
+
+
 
 class LEDClass
 {

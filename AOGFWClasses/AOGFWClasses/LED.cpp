@@ -1,30 +1,29 @@
 #include "LED.h"
 
-void LEDClass::init()
+Led::Led(uint8_t pinNr) : OutputPin(pinNr)
 {
-	pinMode(GGAReceivedLED, OUTPUT);
-	pinMode(Power_on_LED, OUTPUT);
-	pinMode(Ethernet_Active_LED, OUTPUT);
-	pinMode(GPSRED_LED, OUTPUT);
-	pinMode(GPSGREEN_LED, OUTPUT);
-	pinMode(AUTOSTEER_STANDBY_LED, OUTPUT);
-	pinMode(AUTOSTEER_ACTIVE_LED, OUTPUT);
-
 }
 
-void LEDClass::ledOn(LEDs led)
+void Led::on()
 {
-	digitalWrite(led, HIGH);
-
+	_isOn = true;
+	setHigh();
 }
 
-void LEDClass::ledOff(LEDs led)
+void Led::off()
 {
-	digitalWrite(led, LOW);
-
+	_isOn = false;
+	setLow();
 }
 
-void LEDClass::ledBlink(LEDs led, boolean State)
+void Led::invert()
 {
-	digitalWrite(led, State);
+	if (_isOn)
+	{
+		off();
+	}
+	else
+	{
+		on();
+	}
 }
